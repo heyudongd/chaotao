@@ -35,12 +35,37 @@ $(function(){
               //长度校验
               stringLength: {
                 min: 6,
-                max: 12,
-                message: '密码长度必须在6-12之间'
+                max: 50,
+                message: '密码长度必须在6-之间'
               },
             }
           },
         }
       
       });
+     // 注册表单验证成功事件
+     //当表单校验成功时，会触发success.form.bv事件，此时会提交表单，这时候，
+     //通常我们需要禁止表单的自动提交，使用ajax进行表单的提交。
+     $("#form").on('success.form.bv', function (e) {
+       e.preventDefault();
+      //使用ajax提交逻辑
+        $.ajax({
+          type: "post",
+          url: "/employee/employeeLogin",
+          dataType: "json",
+          data: $('#form').serialize(),
+          success: function(res) {
+                if(res.success){
+                  location.href="index.html";
+                }
+                
+            }
+        })
+     });
+      //表单重置
+      $("[type=reset]").on("click",function(){
+        // console.log(111)
+        $("#form").data('bootstrapValidator').resetForm();
+        
+      })
 })
