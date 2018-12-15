@@ -24,6 +24,9 @@ $(function(){
                 max: 6,
                 message: '用户名长度必须在2-6之间'
               },
+              callback: {
+                message: "用户名不存在"
+              }
             }
           },
           password: {
@@ -38,6 +41,9 @@ $(function(){
                 max: 50,
                 message: '密码长度必须在6-之间'
               },
+              callback: {
+                message: "密码错误"
+              }
             }
           },
         }
@@ -57,6 +63,14 @@ $(function(){
           success: function(res) {
                 if(res.success){
                   location.href="index.html";
+                }
+                
+                if(res.error===1000){
+                  $("#form").data('bootstrapValidator').updateStatus("username","INVALID","callback");
+                }
+
+                if(res.error===1001){
+                  $("#form").data('bootstrapValidator').updateStatus("password","INVALID","callback");
                 }
                 
             }
