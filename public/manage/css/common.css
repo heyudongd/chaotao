@@ -122,7 +122,7 @@ a:active {
   width: 100%;
   padding-left: 180px;
   padding-top: 50px;
-  transition: all 1s;
+  /* transition: all 1s; */
 }
 .lt_main.hidemenu {
   padding-left: 0px;
