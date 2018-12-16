@@ -23,10 +23,43 @@ $(function(){
             type:"get",
             dataType:"json",
             success:function( res ){
-                console.log( res );
+                if(res.success){
+                    location.href="login.html";
+                }
                 
             }
         });
       })
 
+    //左边菜单掩藏
+    $(".icon_left").on("click",function(){
+        $(".lt_aside").toggleClass("hidemenu")
+        $(".lt_main").toggleClass("hidemenu")
+        $('.lt_topbar').toggleClass("hidemenu");
+    })
+
+
 })
+NProgress.configure({ showSpinner: false });
+//// 开启进度条
+//NProgress.start();
+//
+//setTimeout(function() {
+//  // 关闭进度条
+//  NProgress.done();
+//}, 500)
+
+
+// ajaxStart 所有的 ajax 开始调用
+$(document).ajaxStart(function() {
+    NProgress.start();
+  });
+  
+  
+  // ajaxStop 所有的 ajax 结束调用
+  $(document).ajaxStop(function() {
+    // 模拟网络延迟
+    setTimeout(function() {
+      NProgress.done();
+    }, 500)
+  });

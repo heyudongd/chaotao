@@ -13,12 +13,15 @@ ul {
   list-style: none;
 }
 .lt_aside{
+    top: 0;
+    left: 0;
     padding: 0;
     position: fixed;
     height: 100%;
     width: 180px;
     background-color: #222D32;
     z-index: 999;
+    transition:1s;
 }
 .lt_aside.hidemenu{
     left: -180px;
@@ -115,4 +118,10 @@ ul {
 }
 .red{
     color: red;
+}
+.lt_content .echarts_1,
+.lt_content .echarts_2{
+    width: 48%;
+    height: 400px;
+   
 }
