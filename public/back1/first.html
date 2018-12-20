@@ -15,7 +15,7 @@
 <div class="lt_aside">
   <!-- 大标题 -->
   <div class="brand">
-    <a href="#">黑马32期牛批</a>
+    <a href="#">没有了天</a>
   </div>
   <!-- 用户 -->
   <div class="user">
@@ -52,21 +52,71 @@
 
     <ol class="breadcrumb mt_20">
       <li><a href="index.html">管理系统</a></li>
-      <li class="active">首页</li>
+      <li class="active">分类管理</li>
+      <li class="active">一级分类</li>
     </ol>
-
-    <!-- Button trigger modal -->
-    <!--
-       data-toggle="modal" 切换模态框
-       data-target="#myModal"  用于指定切换的 具体哪个 模态框, 通过id关联
-    -->
-    <!--<button data-toggle="modal" data-target="#logoutModal">Launch demo modal</button>-->
+    <!-- 添加分类按钮 -->
+    
+    <button type="button" class="btn btn-default" id="addCbtn">添加分类</button>
+    
+ <!-- 表格 -->
+ <table class="table table-bordered table-hover">
+   <thead>	
+     <tr>
+       <th>序号</th>
+       <th>一级分类名</th>
+     </tr>
+   </thead>
+   <tbody>	
+     <!-- 坑 -->
+   </tbody>
+ </table>
+ 
+ <!-- 分页 -->
+    <div class="pull-right">
+      <ul id="pagintor">
+        <li></li>
+      </ul>
+    </div>
+    
+  
 
   </div>
 
 </div>
+<!-- 准备模板 -->
+<script type="text/html" id="firstTip">
+  {{each rows v i}}
+  <tr>
+      <td>{{i+1+(page-1)*size}}</td>
+      <td>{{v.categoryName}}</td>
+    </tr>
+    {{/each}}
+</script>
 
-
+<!-- 添加模板 -->
+<div class="modal fade" id="addModal" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+        </div>
+        <div class="modal-body">
+          <form id="form">
+              <div class="form-group">
+                  <input type="text" class="form-control"name="categoryName" placeholder="请输入一级馆名称">
+                </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary" id="addBtn">确定</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
 <!-- Modal -->
 <!-- 模态框大小: modal-lg大   默认大小   modal-sm小 -->
 <div class="modal fade" id="logoutModal" tabindex="-1">
@@ -95,7 +145,10 @@
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="./lib/nprogress/nprogress.js"></script>
 <script src="./js/common.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script src="lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
 <script src="./js/isLogin.js"></script>
+<script src="./js/first.js"></script>
 
 
 </body>
